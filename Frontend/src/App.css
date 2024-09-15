@@ -1,0 +1,11 @@
+.app {
+  display: flex;
+  width: 100%;
+}
+
+.app-dashboard{
+  width: 85%;
+  padding: 20px;
+  flex-grow: 1;
+}
+
