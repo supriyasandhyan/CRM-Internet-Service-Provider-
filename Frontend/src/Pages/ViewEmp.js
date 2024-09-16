@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table, Modal, Button, Form } from "react-bootstrap";
-import { MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 
 const ViewEmp = () => {
   const [Employees, setEmployees] = useState([]);

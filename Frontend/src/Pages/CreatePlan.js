@@ -109,7 +109,7 @@ const CreatePlan = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Create Plan</h2>
+      <h2>Create Plan <a href='/viewplan' style={{fontSize:"20px"}}>Our Plans</a></h2>
       {submitStatus && <Alert variant={submitStatus.includes('successfully') ? 'success' : 'danger'}>{submitStatus}</Alert>}
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formPlanName">

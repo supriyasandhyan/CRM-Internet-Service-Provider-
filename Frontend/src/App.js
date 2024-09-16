@@ -15,6 +15,8 @@ import './App.css'
 import AdminDashboard from "./Pages/AdminDashboard";
 import ViewEmp from "./Pages/ViewEmp";
 import EditEmp from "./Pages/EditEmp";
+import ViewCust from "./Pages/ViewCust";
+import ViewPlans from "./Pages/ViewPlans";
 
 const App = () => {
   const navigate = useNavigate();
@@ -74,10 +76,12 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/create-plan" element={<CreatePlan />} />
+          <Route path="/viewplan" element={<ViewPlans />} />
           <Route path="/emp" element={<Employee />} />
           <Route path="/viewemp" element={<ViewEmp />} />
           <Route path="/edit-emp/:EmpID" element={<EditEmp />} />
           <Route path="/cust" element={<Customer />} />
+          <Route path="/viewcust" element={<ViewCust />} />
           <Route path="/comp" element={<Complaint />} />
           <Route path="/emp-report" element={<EmpReport />} />
           <Route path="/cust-report" element={<CustReport />} />
