@@ -42,7 +42,7 @@ const App = () => {
       { label: "Create Plan", path: "/create-plan" },
       { label: "Employee", path: "/emp" },
       { label: "Customer", path: "/cust" },
-      { label: "Complaint", path: "/comp" },
+      { label: "Complaint", path: "/complaint" },
       { label: "Employee Report", path: "/emp-report" },
       { label: "Customer Report", path: "/cust-report" },
       { label: "Logout", path: "/" },
@@ -82,7 +82,7 @@ const App = () => {
           <Route path="/edit-emp/:EmpID" element={<EditEmp />} />
           <Route path="/cust" element={<Customer />} />
           <Route path="/viewcust" element={<ViewCust />} />
-          <Route path="/comp" element={<Complaint />} />
+          <Route path="/complaint" element={<Complaint />} />
           <Route path="/emp-report" element={<EmpReport />} />
           <Route path="/cust-report" element={<CustReport />} />
         </Routes>

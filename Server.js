@@ -24,7 +24,7 @@ app.use("/api/v1/", require('./Routes/AuthRoutes'))
 app.use('/api/v1/', require('./Routes/CreatePlanRoutes'));
 app.use("/api/v1/", require('./Routes/EmpRoutes'))
 app.use("/api/v1/", require('./Routes/CustRoutes'))
-
+app.use("/api/v1/", require('./Routes/ComplaintRoutes'))
 
 //port
 const PORT = process.env.PORT || 8080;
