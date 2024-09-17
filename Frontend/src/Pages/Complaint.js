@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Complaint = () => {
   const [emailSuggestions, setEmailSuggestions] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState("");
   const [selectedName, setSelectedName] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEmails = async () => {
@@ -50,7 +52,6 @@ const Complaint = () => {
     try {
       await axios.post("http://localhost:8080/api/v1/submit-complaint", formData);
       alert("Complaint submitted successfully!");
-
       // Clear form fields
       setSelectedEmail("");
       setSelectedName("");
@@ -64,7 +65,7 @@ const Complaint = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h1>Complaints</h1>
+      <h1>Complaints <a href="/view-complaints" style={{fontSize:"15px"}}>View Complaints</a></h1>
       {/* Email Selection */}
       <Form.Group controlId="formEmail">
         <Form.Label>Customer Email</Form.Label>

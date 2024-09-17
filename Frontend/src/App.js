@@ -17,6 +17,7 @@ import ViewEmp from "./Pages/ViewEmp";
 import EditEmp from "./Pages/EditEmp";
 import ViewCust from "./Pages/ViewCust";
 import ViewPlans from "./Pages/ViewPlans";
+import ViewComplaints from "./Pages/ViewComplaints";
 
 const App = () => {
   const navigate = useNavigate();
@@ -83,6 +84,7 @@ const App = () => {
           <Route path="/cust" element={<Customer />} />
           <Route path="/viewcust" element={<ViewCust />} />
           <Route path="/complaint" element={<Complaint />} />
+          <Route path="/view-complaints" element={<ViewComplaints />} />
           <Route path="/emp-report" element={<EmpReport />} />
           <Route path="/cust-report" element={<CustReport />} />
         </Routes>
