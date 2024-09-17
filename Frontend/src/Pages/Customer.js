@@ -9,30 +9,29 @@ const Customers = () => {
     CustEmail: "",
     CustGender: "",
     CustBusiness: "",
-    BusinessType: "No", // Default to "No"
+    BusinessType: "", // Change default to empty string instead of "No"
     Region: "",
     SelectPlan: "",
     dateInput: "",
   });
-  
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({
-      ...formData,
+    setFormData(prevState => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
   const handleBusinessChange = (event) => {
     const value = event.target.value;
-    setFormData({
-      ...formData,
+    setFormData(prevState => ({
+      ...prevState,
       CustBusiness: value,
-      CustBusiness: value === "No" ? formData.BusinessType : "No", // Automatically set BusinessType to "No" if CustBusiness is "No"
-    });
+      BusinessType: value === "Yes" ? prevState.BusinessType : "" // Set to empty string when not applicable
+    }));
   };
 
   const handleSubmit = async (event) => {
@@ -41,13 +40,18 @@ const Customers = () => {
     // Prepare the formData for submission
     const submitData = {
       ...formData,
-      BusinessType: formData.CustBusiness === "No" ? formData.BusinessType : "No" , // Ensure BusinessType is "No" when CustBusiness is "No"
+      BusinessType: formData.CustBusiness === "Yes" ? formData.BusinessType : "", // Ensure correct value based on CustBusiness
     };
 
-    console.log("Data being submitted: ", submitData); // Log the data to verify
-    
+    console.log("Data being submitted: ", submitData);
+
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/add-cust', submitData);
+      const response = await axios.post('http://localhost:8080/api/v1/add-cust', submitData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log("Server response: ", response);
       setSuccess("Customer added successfully!");
       setError("");
 
@@ -58,7 +62,7 @@ const Customers = () => {
         CustEmail: "",
         CustGender: "",
         CustBusiness: "",
-        BusinessType: "No", // Reset to "No"
+        BusinessType: "", // Reset to empty string
         Region: "",
         SelectPlan: "",
         dateInput: "",
@@ -158,7 +162,6 @@ const Customers = () => {
             </Form.Group>
           </Col>
 
-          {/* Only show BusinessType if CustBusiness is "Yes" */}
           {formData.CustBusiness === "Yes" && (
             <Col md={4}>
               <Form.Group controlId="BusinessType">
