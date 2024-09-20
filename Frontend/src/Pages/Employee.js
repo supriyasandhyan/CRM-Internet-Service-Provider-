@@ -100,7 +100,7 @@ const Employee = () => {
 
   return (
     <>
-      <h3>Add Employee &nbsp; <a href="/viewemp">View Employees</a></h3>
+      <h3>Add Employee</h3>
       {submitStatus && (
         <Alert variant={submitStatus.includes("successfully") ? "success" : "danger"}>
           {submitStatus}

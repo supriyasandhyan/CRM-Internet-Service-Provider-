@@ -21,7 +21,7 @@ const ViewPlans = () => {
 
   return (
     <div className="container">
-      <h3>Plans</h3>
+      <h3>Data Plans<a href='/create-plan' style={{fontSize:"15px" , marginLeft:"20px"}}>Create New Plan</a></h3>
 
       {/* Plans Table */}
       <Table striped bordered hover className="mt-4">

@@ -69,7 +69,7 @@ const ViewEmp = () => {
 
   return (
     <div>
-      <h3>View Employees</h3>
+      <h3>Our Employees &nbsp; <a href="/emp" style={{fontSize:"15px"}}>Add Employee</a></h3>
 
       <div className="container mt-4">
         <Table striped bordered hover>

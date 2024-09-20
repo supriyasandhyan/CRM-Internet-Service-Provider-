@@ -40,9 +40,9 @@ const App = () => {
 
   const handleLogin = () => {
     updateMenuItems([
-      { label: "Create Plan", path: "/create-plan" },
-      { label: "Employee", path: "/emp" },
-      { label: "Customer", path: "/cust" },
+      { label: "Data Plans", path: "/viewplan" },
+      { label: "Employee", path: "/viewemp" },
+      { label: "Customer", path: "/viewcust" },
       { label: "Complaint", path: "/complaint" },
       { label: "Employee Report", path: "/emp-report" },
       { label: "Customer Report", path: "/cust-report" },

@@ -88,7 +88,7 @@ const ViewCust = () => {
 
   return (
     <div>
-      <h3>View Customers</h3>
+      <h3>Our Customers <a href="/cust" style={{ fontSize: "15px" }}>Add New Customer</a></h3>
 
       {error && <Alert variant="danger">{error}</Alert>}
       {success && <Alert variant="success">{success}</Alert>}

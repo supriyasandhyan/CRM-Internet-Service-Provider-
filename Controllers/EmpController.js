@@ -84,7 +84,20 @@ const deleteEmpLogic = async (req, res) => {
   }
 };
 
-module.exports = { addEmpLogic, getAllEmpsLogic, editEmpLogic, deleteEmpLogic };
+
+// Get employee count by location
+const getEmployeeCountByLocation = async (req, res) => {
+  try {
+    const locationData = await AddEmp.aggregate([
+      { $group: { _id: "$EmpLocation", count: { $sum: 1 } } }
+    ]);
+    res.status(200).json(locationData);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching employee data' });
+  }
+};
+
+module.exports = { addEmpLogic, getAllEmpsLogic, editEmpLogic, deleteEmpLogic, getEmployeeCountByLocation };
 
 
 

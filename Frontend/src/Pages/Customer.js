@@ -77,7 +77,7 @@ const Customers = () => {
   return (
     <div className="form-section">
       <h1 className="mb-5">
-        Add Customer <a href="/viewcust" style={{ fontSize: "20px" }}>View Customers</a>
+        Add Customer 
       </h1>
       {error && <Alert variant="danger">{error}</Alert>}
       {success && <Alert variant="success">{success}</Alert>}
