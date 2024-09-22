@@ -9,7 +9,7 @@ const Customers = () => {
     CustEmail: "",
     CustGender: "",
     CustBusiness: "",
-    BusinessType: "", // Change default to empty string instead of "No"
+    BusinessType: "",
     Region: "",
     SelectPlan: "",
     dateInput: "",
@@ -30,17 +30,16 @@ const Customers = () => {
     setFormData(prevState => ({
       ...prevState,
       CustBusiness: value,
-      BusinessType: value === "Yes" ? prevState.BusinessType : "" // Set to empty string when not applicable
+      BusinessType: value === "Yes" ? prevState.BusinessType : ""
     }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Prepare the formData for submission
     const submitData = {
       ...formData,
-      BusinessType: formData.CustBusiness === "Yes" ? formData.BusinessType : "", // Ensure correct value based on CustBusiness
+      BusinessType: formData.CustBusiness === "Yes" ? formData.BusinessType : "", 
     };
 
     console.log("Data being submitted: ", submitData);
@@ -55,14 +54,13 @@ const Customers = () => {
       setSuccess("Customer added successfully!");
       setError("");
 
-      // Reset the form fields after successful submission
       setFormData({
         CustName: "",
         CustContact: "",
         CustEmail: "",
         CustGender: "",
         CustBusiness: "",
-        BusinessType: "", // Reset to empty string
+        BusinessType: "", 
         Region: "",
         SelectPlan: "",
         dateInput: "",

@@ -11,13 +11,14 @@ import Register from "./Auth/Register";
 import Sidebar from "./MenuBar/Sidebar";
 import EmpReport from "./Pages/EmpReport";
 import CustReport from "./Pages/CustReport";
-import './App.css'
 import AdminDashboard from "./Pages/AdminDashboard";
 import ViewEmp from "./Pages/ViewEmp";
 import EditEmp from "./Pages/EditEmp";
 import ViewCust from "./Pages/ViewCust";
 import ViewPlans from "./Pages/ViewPlans";
 import ViewComplaints from "./Pages/ViewComplaints";
+import './App.css'
+
 
 const App = () => {
   const navigate = useNavigate();

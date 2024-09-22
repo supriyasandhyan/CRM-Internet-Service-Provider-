@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-// Register chart elements and plugin
 Chart.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const CustReport = () => {
@@ -41,7 +40,6 @@ const CustReport = () => {
         const response = await axios.get('http://localhost:8080/api/v1/getAllComplaint');
         const data = response.data;
 
-        // Prepare data for the chart
         const customerEmails = data.map((complaint) => complaint.CustEmail.CustEmail);
         const emailCounts = {};
         

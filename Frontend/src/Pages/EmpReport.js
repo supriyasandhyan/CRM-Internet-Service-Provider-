@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-// Register chart elements and plugin
 Chart.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const EmpReport = () => {
@@ -93,11 +92,10 @@ const EmpReport = () => {
           return percentage;
         },
         color: (context) => {
-          // Set the color of the percentage label
           return context.dataset.backgroundColor[context.black]; 
         },
         font: {
-          weight: 'bold', // Optional: make the font bold
+          weight: 'bold',
         },
       },
     },

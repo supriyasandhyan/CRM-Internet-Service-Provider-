@@ -143,7 +143,6 @@ const ViewCust = () => {
         </Table>
       </div>
 
-      {/* Edit Customer Modal */}
       <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Customer</Modal.Title>

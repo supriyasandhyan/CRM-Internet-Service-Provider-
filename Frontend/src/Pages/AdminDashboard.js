@@ -5,11 +5,9 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const loadYouTubeAPI = () => {
-      // Create a script element for the YouTube IFrame API
       const script = document.createElement('script');
       script.src = 'https://www.youtube.com/iframe_api';
       
-      // Define the callback function for when the API is ready
       script.onload = () => {
         window.onYouTubeIframeAPIReady = () => {
           if (iframeContainerRef.current) {
@@ -20,19 +18,19 @@ const AdminDashboard = () => {
               playerVars: {
                 autoplay: 1,
                 loop: 1,
-                controls: 0, // Hide player controls
-                playlist: 'q_Z40IrY2rs', // Looping the video requires adding the video ID to the playlist
-                modestbranding: 1, // Hide YouTube logo
-                rel: 0, // Disable related videos at the end
-                mute: 1 // Ensure video is muted to allow autoplay
+                controls: 0, 
+                playlist: 'q_Z40IrY2rs', 
+                modestbranding: 1,
+                rel: 0, 
+                mute: 1
               },
               events: {
                 onReady: (event) => {
-                  event.target.playVideo(); // Start video on ready
+                  event.target.playVideo(); 
                 },
                 onStateChange: (event) => {
                   if (event.data === window.YT.PlayerState.ENDED) {
-                    event.target.playVideo(); // Restart video when it ends
+                    event.target.playVideo();
                   }
                 }
               }
@@ -41,10 +39,7 @@ const AdminDashboard = () => {
         };
       };
 
-      // Append the script to the document body
       document.body.appendChild(script);
-
-      // Cleanup function to remove the script
       return () => {
         const existingScript = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
         if (existingScript) {
@@ -59,7 +54,7 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h3>CRM Dashboard</h3>
       <div
         ref={iframeContainerRef}
         id="youtube-player"

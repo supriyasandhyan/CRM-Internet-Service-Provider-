@@ -25,21 +25,18 @@ const Complaint = () => {
     fetchEmails();
   }, []);
 
-  // Handle email selection
   const handleEmailChange = (e) => {
     const email = e.target.value;
     setSelectedEmail(email);
 
-    // Find the corresponding customer based on the selected email
     const customer = emailSuggestions.find((cust) => cust.CustEmail === email);
     if (customer) {
-      setSelectedName(customer.CustName); // Set the customer name based on email
+      setSelectedName(customer.CustName); 
     } else {
-      setSelectedName(""); // Clear the name field if no match is found
+      setSelectedName("");
     }
   };
 
-  // Form submission handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
@@ -52,7 +49,6 @@ const Complaint = () => {
     try {
       await axios.post("http://localhost:8080/api/v1/submit-complaint", formData);
       alert("Complaint submitted successfully!");
-      // Clear form fields
       setSelectedEmail("");
       setSelectedName("");
       e.target.formComplaint.value = "";
@@ -66,7 +62,6 @@ const Complaint = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <h1>Complaints <a href="/view-complaints" style={{fontSize:"15px"}}>View Complaints</a></h1>
-      {/* Email Selection */}
       <Form.Group controlId="formEmail">
         <Form.Label>Customer Email</Form.Label>
         <Form.Control
@@ -87,30 +82,26 @@ const Complaint = () => {
         </Form.Control>
       </Form.Group>
 
-      {/* Name Field */}
       <Form.Group controlId="formName">
         <Form.Label>Customer Name</Form.Label>
         <Form.Control
           type="text"
           placeholder="Customer name"
           value={selectedName}
-          readOnly // The field is read-only since it is auto-filled
+          readOnly
         />
       </Form.Group>
 
-      {/* Complaint Field */}
       <Form.Group controlId="formComplaint">
         <Form.Label>Complaint</Form.Label>
         <Form.Control as="textarea" rows={3} placeholder="Enter complaint details" />
       </Form.Group>
 
-      {/* Date Field */}
       <Form.Group controlId="formDate">
         <Form.Label>Date</Form.Label>
         <Form.Control type="date" />
       </Form.Group>
 
-      {/* Submit Button */}
       <Button variant="primary" type="submit" className="mt-4 px-4">
         Submit
       </Button>

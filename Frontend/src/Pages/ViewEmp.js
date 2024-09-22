@@ -114,7 +114,6 @@ const ViewEmp = () => {
         </Table>
       </div>
 
-      {/* Edit Employee Modal */}
       <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Employee</Modal.Title>

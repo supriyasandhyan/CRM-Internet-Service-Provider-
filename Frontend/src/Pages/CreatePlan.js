@@ -3,7 +3,6 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 
 const CreatePlan = () => {
-  // State for form values
   const [formData, setFormData] = useState({
     planName: '',
     speedLimits: '',
@@ -11,7 +10,6 @@ const CreatePlan = () => {
     duration: ''
   });
 
-  // State for validation errors
   const [errors, setErrors] = useState({
     planName: '',
     speedLimits: '',
@@ -19,15 +17,12 @@ const CreatePlan = () => {
     duration: ''
   });
 
-  // State for form submission success or error
   const [submitStatus, setSubmitStatus] = useState('');
 
-  // Fetch initial data when component mounts
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/v1/plans');
-        // Assuming response contains default or pre-fill data
         setFormData(response.data);
       } catch (error) {
         console.error('Error fetching initial data:', error);
@@ -35,9 +30,8 @@ const CreatePlan = () => {
     };
 
     fetchInitialData();
-  }, []); // Empty dependency array ensures this runs once on mount
+  }, []);
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -46,7 +40,6 @@ const CreatePlan = () => {
     });
   };
 
-  // Validate form fields
   const validateForm = () => {
     const newErrors = {
       planName: '',
@@ -81,14 +74,12 @@ const CreatePlan = () => {
     return isValid;
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       try {
         const response = await axios.post('http://localhost:8080/api/v1/create-plan', formData);
           setSubmitStatus('Form submitted successfully!');
-        // Handle successful response here
         setFormData({
           planName: '',
           speedLimits: '',
@@ -100,7 +91,6 @@ const CreatePlan = () => {
         }, 2000);
       } catch (error) {
         setSubmitStatus('Failed to submit form. Please try again.');
-        // Handle error response here
       }
     } else {
       setSubmitStatus('');

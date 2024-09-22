@@ -17,10 +17,6 @@ const Register = () => {
         },
         body: JSON.stringify({ username, password }),
       });
-
-      // Debugging: Log response and data
-      console.log("Response status:", response.status);
-      console.log("Response headers:", response.headers);
       
       const data = await response.json();
       console.log("Response data:", data);
@@ -28,7 +24,6 @@ const Register = () => {
       if (response.ok) {
         setMessage("Registration successful!");
         setMessageStyle("green");
-        // Clear form fields
         setUsername("");
         setPassword("");
       } else {

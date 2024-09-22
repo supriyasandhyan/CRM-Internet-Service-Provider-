@@ -5,7 +5,6 @@ import axios from "axios";
 const ViewPlans = () => {
   const [plans, setPlans] = useState([]);
 
-  // Fetch plans from the backend
   const fetchPlans = async () => {
     try {
       const response = await axios.get("http://localhost:8080/api/v1/getallplans");

@@ -3,8 +3,8 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 const EditEmp = () => {
-  const { EmpID } = useParams(); // Get EmpID from the route
-  const navigate = useNavigate(); // For navigation after update
+  const { EmpID } = useParams(); 
+  const navigate = useNavigate(); 
   
   const [formData, setFormData] = useState({
     EmpID: '',
@@ -14,12 +14,11 @@ const EditEmp = () => {
     EmpLocation: '',
   });
 
-  // Fetch the existing data using useEffect
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/api/v1/get-emp/${EmpID}`);
-        setFormData(response.data); // Assuming the response contains employee data
+        setFormData(response.data); 
       } catch (error) {
         console.log("Error fetching data", error);
       }
@@ -30,7 +29,6 @@ const EditEmp = () => {
     }
   }, [EmpID]);
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -39,14 +37,12 @@ const EditEmp = () => {
     });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.put(`http://localhost:8080/api/v1/edit-emp/${EmpID}`, formData);
       console.log("Data updated successfully", response.data);
-      // Redirect to the employee list page after update
       navigate('/viewemp');
     } catch (error) {
       console.log("Error updating data", error);

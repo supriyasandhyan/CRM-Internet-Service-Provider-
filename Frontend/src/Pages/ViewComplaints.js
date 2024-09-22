@@ -11,13 +11,11 @@ const ComplaintsTable = () => {
   const [selectedEmployees, setSelectedEmployees] = useState({}); // To track selected employee per complaint
 
   useEffect(() => {
-    // Fetch complaints
     const fetchComplaints = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/v1/getAllComplaint');
         setComplaints(response.data);
 
-        // Initialize the statuses as "Unresolved" for all complaints
         const initialStatuses = response.data.reduce((acc, complaint, index) => {
           acc[index] = 'Unresolved';
           return acc;
@@ -31,7 +29,6 @@ const ComplaintsTable = () => {
       }
     };
 
-    // Fetch employee emails
     const fetchEmployees = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/v1/get-emp');
@@ -45,13 +42,11 @@ const ComplaintsTable = () => {
     fetchEmployees();
   }, []);
 
-  // Handle employee selection for each complaint
   const handleEmployeeSelect = (index, empEmail) => {
     const newSelectedEmployees = { ...selectedEmployees, [index]: empEmail };
     setSelectedEmployees(newSelectedEmployees);
   };
 
-  // Toggle status between "Resolved" and "Unresolved"
   const handleStatusToggle = (index) => {
     const selectedEmp = selectedEmployees[index];
     
@@ -97,7 +92,6 @@ const ComplaintsTable = () => {
                 <td>{complaint.complaint || 'N/A'}</td>
                 <td>{new Date(complaint.date).toLocaleDateString()}</td>
                 <td>
-                  {/* Employee email dropdown */}
                   <Form.Control
                     as="select"
                     value={selectedEmployees[index] || ""}
@@ -116,7 +110,6 @@ const ComplaintsTable = () => {
                   </Form.Control>
                 </td>
                 <td>
-                  {/* Action button to toggle between Resolved and Unresolved */}
                   <Button
                     variant={statuses[index] === 'Unresolved' ? 'danger' : 'success'}
                     onClick={() => handleStatusToggle(index)}
