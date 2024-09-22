@@ -3,7 +3,11 @@ import React from "react";
 const About = () => {
   return (
     <div>
+<<<<<<< HEAD
       <h3>Know About Us</h3>
+=======
+      <h1>About</h1>
+>>>>>>> ac8efc150f908747f5b14b723d9fea5e22a81375
       <br />
       <p style={{ textAlign: "justify" }}>
         CRM stands for Customer Relationship Management, and it refers to
